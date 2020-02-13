@@ -1,0 +1,17 @@
+---
+- hosts: all
+  vars:
+    http_pkg: httpd
+  remote_user: root
+  tasks:
+  - name: install httpd
+    yum:
+     name: "{{ http_pkg }}"
+     state: latest
+    notify:
+      - restart httpd
+  handlers:
+   - name: restart httpd
+     service:
+      name: "{{ http_pkg }}"
+      state: restarted

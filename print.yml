@@ -1,0 +1,11 @@
+---
+- hosts: all
+  vars_promt:
+   - name: var1
+      promt: " enter your value? "
+     yum:
+      name: "{{var1}}"
+      state: installed
+     debug:
+      msg: "{{var1}}"
+
